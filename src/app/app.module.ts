@@ -9,6 +9,7 @@ import { DeleteProductModalComponent } from './components/delete-product-modal/d
 import { AddOrEditProductModalComponent } from './components/add-or-edit-product-modal/add-or-edit-product-modal.component';
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShowProductComponent } from './components/show-product/show-product.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     DeleteProductModalComponent,
     AddOrEditProductModalComponent,
+    ShowProductComponent,
   ],
   imports: [
     BrowserModule,

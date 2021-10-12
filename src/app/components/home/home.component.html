@@ -1,18 +1,20 @@
 <clr-main-container>
 
     <clr-header>
-     
+
       <div class="header-nav" [clr-nav-level]="1">
         <div class="branding">
           <span class="title">Gestion</span>
         </div>
       </div>
-      
+
     </clr-header>
 
     <div class="content-container">
       <main class="content-area">
-        <p>Product</p>
+
+        <app-show-product [products]=products></app-show-product>
+
       </main>
       <nav class="sidenav" [clr-nav-level]="2">
         <a href="javascript://" class="nav-link active">
@@ -31,4 +33,3 @@
     </div>
 
   </clr-main-container>
-  
