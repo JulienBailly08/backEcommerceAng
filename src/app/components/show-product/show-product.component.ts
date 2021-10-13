@@ -13,5 +13,14 @@ export class ShowProductComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  onEdit(product:Product):void{
+
+  }
+  onDelete(product:Product):void{
+
+  }
+  addProduct():void{
+
+  }
 
 }

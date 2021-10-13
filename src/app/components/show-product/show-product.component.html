@@ -1,3 +1,6 @@
+<h1>Liste des produits</h1>
+<button class="btn btn-outline btn-sm"(click)="addProduct()">Ajouter un produit</button>
+
 <clr-datagrid>
   <clr-dg-column>ID</clr-dg-column>
   <clr-dg-column [clrDgField]="'name'">Nom</clr-dg-column>
@@ -6,6 +9,14 @@
   <clr-dg-column>Stock</clr-dg-column>
 
   <clr-dg-row *clrDgItems="let product of products">
+
+     <!-- Actions sur produits -->
+    <clr-dg-action-overflow>
+      <button class="action-item" (click)="onEdit(product)">Modifier</button>
+      <button class="action-item" (click)="onDelete(product)">Supprimer</button>
+    </clr-dg-action-overflow>
+    <!-- end Actions sur produits -->
+
     <clr-dg-cell>{{product.idProduct}}</clr-dg-cell>
     <clr-dg-cell>{{product.name}}</clr-dg-cell>
     <clr-dg-cell>{{product.description }}</clr-dg-cell>
