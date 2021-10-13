@@ -1,10 +1,9 @@
 <clr-wizard #wizard [clrWizardOpen]="true">
   <clr-wizard-title>{{product ? 'Modification du produits':'Ajout d\'un produit'}}</clr-wizard-title>
 
-  <clr-wizard-button [type]="'cancel'">Annuler</clr-wizard-button>
-  <clr-wizard-button [type]="'previous'">Retour</clr-wizard-button>
+  <clr-wizard-button [type]="'cancel'" (click)="CancelModal()">Annuler</clr-wizard-button>
   <clr-wizard-button [type]="'next'">Suivant</clr-wizard-button>
-  <clr-wizard-button [type]="'finish'">Finaliser</clr-wizard-button>
+
 
   <clr-wizard-page>
     <ng-template clrPageTitle>Selection de la catégorie</ng-template>
@@ -55,7 +54,7 @@
       </div>
 
       <ng-template clrPageButtons>
-        <clr-wizard-button [type]="'cancel'">Annuler</clr-wizard-button>
+        <clr-wizard-button [type]="'cancel'" (click)="CancelModal()">Annuler</clr-wizard-button>
         <clr-wizard-button [type]="'previous'">Retour</clr-wizard-button>
         <clr-wizard-button [type]="'next'" [clrWizardButtonDisabled]="isProductInfoValid">Suivant</clr-wizard-button>
       </ng-template>
@@ -74,10 +73,9 @@
 
       </div>
       <ng-template clrPageButtons>
-        <clr-wizard-button [type]="'cancel'">Annuler</clr-wizard-button>
+        <clr-wizard-button [type]="'cancel'" (click)="CancelModal()">Annuler</clr-wizard-button>
         <clr-wizard-button [type]="'previous'">Retour</clr-wizard-button>
-        <clr-wizard-button [type]="'finish'" [clrWizardButtonDisabled]="!isIlustrationValid">Finaliser
-        </clr-wizard-button>
+        <clr-wizard-button [type]="'finish'" [clrWizardButtonDisabled]="!isIlustrationValid" (click)="handleFinnish()">Finaliser</clr-wizard-button>
       </ng-template>
 
     </clr-wizard-page>

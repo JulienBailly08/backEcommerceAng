@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Category } from 'src/app/models/category';
@@ -14,6 +14,8 @@ import { CategoriesService } from 'src/app/services/categories.service';
 export class AddOrEditProductModalComponent implements OnInit, OnDestroy {
 
   @Input() product!:Product;
+  @Output() finish = new EventEmitter;
+
   productForm:FormGroup;
   categories!: Category[];
   categorySub!: Subscription;
@@ -49,9 +51,27 @@ export class AddOrEditProductModalComponent implements OnInit, OnDestroy {
 
   get isIlustrationValid():boolean{
     return this.productForm.get('illustration')!.valid;
-    console.log(this.productForm.get('illustration')!.valid);
   }
 
+  CancelModal():void{
+    this.finish.emit();
+    this.closeModal();
+  }
+
+  closeModal():void{
+    this.productForm.reset();
+    this.idCategory = 1;
+  }
+
+  handleFinnish():void{
+    const product = {
+      ...this.productForm.get('productInfos')?.value, //...permet de créer associtation entre clefs de l'objet valeurs => normalizer ?
+      ...this.productForm.get('illustration')?.value,
+      category : this.idCategory
+    }
+    this.finish.emit(product);
+    this.closeModal();
+  }
 
   ngOnInit(): void {
     this.categorySub = this.categoriesServices.getCategories().subscribe(
