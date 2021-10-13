@@ -8,7 +8,22 @@
 
   <clr-wizard-page>
     <ng-template clrPageTitle>Selection de la catégorie</ng-template>
-    <ng-template clrPageNavTitle>Step 1</ng-template>
+    <ng-template clrPageNavTitle>Catégorie</ng-template>
+
+    <div class="clr-row category">
+      <div class="clr-col-md-6" *ngFor="let category of categories">
+        <a href="javascript:void(0)" class="card clickable"
+        (click)="selectCategory(category.idCategory)"
+        [ngClass]="{'active': category.idCategory == idCategory}">
+          <div class="card-block">
+            <p class="card-text">
+              {{category.name}}
+              <clr-icon [attr.shape]="category.icon">Icone SVG ??</clr-icon>
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
 
   </clr-wizard-page>
 
@@ -16,7 +31,7 @@
 
   <clr-wizard-page>
     <ng-template clrPageTitle>Informations du produit</ng-template>
-    <ng-template clrPageNavTitle>Step 2</ng-template>
+    <ng-template clrPageNavTitle>Spécificités du produit</ng-template>
     <div formGroupName="productInfos">
 
       <clr-input-container>
@@ -45,7 +60,7 @@
 
   <clr-wizard-page>
     <ng-template clrPageTitle>Ajout d'image</ng-template>
-    <ng-template clrPageNavTitle>Step 3</ng-template>
+    <ng-template clrPageNavTitle>Image</ng-template>
     <div formGroupName="illustration">
 
       <clr-input-container>
