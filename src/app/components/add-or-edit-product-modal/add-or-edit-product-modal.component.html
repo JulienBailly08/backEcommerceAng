@@ -12,9 +12,8 @@
 
     <div class="clr-row category">
       <div class="clr-col-md-6" *ngFor="let category of categories">
-        <a href="javascript:void(0)" class="card clickable"
-        (click)="selectCategory(category.idCategory)"
-        [ngClass]="{'active': category.idCategory == idCategory}">
+        <a href="javascript:void(0)" class="card clickable" (click)="selectCategory(category.idCategory)"
+          [ngClass]="{'active': category.idCategory == idCategory}">
           <div class="card-block">
             <p class="card-text">
               {{category.name}}
@@ -29,48 +28,60 @@
 
   <form [formGroup]="productForm">
 
-  <clr-wizard-page>
-    <ng-template clrPageTitle>Informations du produit</ng-template>
-    <ng-template clrPageNavTitle>Spécificités du produit</ng-template>
-    <div formGroupName="productInfos">
+    <clr-wizard-page>
+      <ng-template clrPageTitle>Informations du produit</ng-template>
+      <ng-template clrPageNavTitle>Spécificités du produit</ng-template>
+      <div formGroupName="productInfos">
 
-      <clr-input-container>
-        <label>Nom du produit</label>
-        <input clrInput placeholder="Saisir nom" name="name" formControlName="name" />
-      </clr-input-container>
+        <clr-input-container>
+          <label for="name">Nom du produit</label>
+          <input clrInput placeholder="Saisir nom" id="name" name="name" formControlName="name" />
+        </clr-input-container>
 
-      <clr-textarea-container>
-        <label>Description</label>
-        <textarea clrTextarea formControlName="description" name="description"></textarea>
-      </clr-textarea-container>
+        <clr-textarea-container>
+          <label for="description">Description</label>
+          <textarea clrTextarea formControlName="description" id="description" name="description"></textarea>
+        </clr-textarea-container>
 
-      <clr-input-container>
-        <label>Prix de l'objet</label>
-        <input clrInput placeholder="Saisir prix" name="price" formControlName="price" />
-      </clr-input-container>
+        <clr-input-container>
+          <label for="price">Prix de l'objet</label>
+          <input clrInput placeholder="Saisir prix" id="price" name="price" formControlName="price" />
+        </clr-input-container>
 
-      <clr-input-container>
-        <label>Quantité en stock</label>
-        <input clrInput placeholder="Saisir valeur" name="stock" formControlName="stock" />
-      </clr-input-container>
+        <clr-input-container>
+          <label for="stock">Quantité en stock</label>
+          <input clrInput placeholder="Saisir valeur" id="stock" name="stock" formControlName="stock" />
+        </clr-input-container>
+      </div>
 
-    </div>
+      <ng-template clrPageButtons>
+        <clr-wizard-button [type]="'cancel'">Annuler</clr-wizard-button>
+        <clr-wizard-button [type]="'previous'">Retour</clr-wizard-button>
+        <clr-wizard-button [type]="'next'" [clrWizardButtonDisabled]="isProductInfoValid">Suivant</clr-wizard-button>
+      </ng-template>
 
-  </clr-wizard-page>
+    </clr-wizard-page>
 
-  <clr-wizard-page>
-    <ng-template clrPageTitle>Ajout d'image</ng-template>
-    <ng-template clrPageNavTitle>Image</ng-template>
-    <div formGroupName="illustration">
+    <clr-wizard-page>
+      <ng-template clrPageTitle>Ajout d'image</ng-template>
+      <ng-template clrPageNavTitle>Image</ng-template>
+      <div formGroupName="illustration">
 
-      <clr-input-container>
-        <label>Image du produit</label>
-        <input clrInput type="file" name="image" formControlName="image" />
-      </clr-input-container>
+        <clr-input-container>
+          <label for="image">Image du produit</label>
+          <input clrInput type="file" id="image" name="image" formControlName="image" />
+        </clr-input-container>
 
-    </div>
-  </clr-wizard-page>
+      </div>
+      <ng-template clrPageButtons>
+        <clr-wizard-button [type]="'cancel'">Annuler</clr-wizard-button>
+        <clr-wizard-button [type]="'previous'">Retour</clr-wizard-button>
+        <clr-wizard-button [type]="'finish'" [clrWizardButtonDisabled]="!isIlustrationValid">Finaliser
+        </clr-wizard-button>
+      </ng-template>
 
-</form>
+    </clr-wizard-page>
+
+  </form>
 
 </clr-wizard>

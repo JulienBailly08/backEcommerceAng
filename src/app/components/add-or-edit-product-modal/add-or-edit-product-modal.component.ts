@@ -14,10 +14,11 @@ import { CategoriesService } from 'src/app/services/categories.service';
 export class AddOrEditProductModalComponent implements OnInit, OnDestroy {
 
   @Input() product!:Product;
-  productForm !: FormGroup;
+  productForm:FormGroup;
   categories!: Category[];
   categorySub!: Subscription;
   idCategory = 1;
+
 
   constructor(
     private formBuilder:FormBuilder,
@@ -25,7 +26,7 @@ export class AddOrEditProductModalComponent implements OnInit, OnDestroy {
   ) {
 
     this.productForm = formBuilder.group({
-      productInfos: formBuilder.group({
+      productInfos:formBuilder.group({
         name:['',Validators.required],
         description:['',Validators.required],
         price:['',Validators.required],
@@ -40,6 +41,17 @@ export class AddOrEditProductModalComponent implements OnInit, OnDestroy {
   selectCategory(id:number){
     this.idCategory=id;
   }
+
+  get isProductInfoValid():boolean{  // get permet d'appeler la méthode sans mettre de ()
+    return this.productForm.get('productInfos')!.valid; // ajout !avant methode pour laisser possibilité objet null
+
+  }
+
+  get isIlustrationValid():boolean{
+    return this.productForm.get('illustration')!.valid;
+    console.log(this.productForm.get('illustration')!.valid);
+  }
+
 
   ngOnInit(): void {
     this.categorySub = this.categoriesServices.getCategories().subscribe(
