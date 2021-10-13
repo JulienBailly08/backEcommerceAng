@@ -1,11 +1,11 @@
 <clr-datagrid>
   <clr-dg-column>ID</clr-dg-column>
-  <clr-dg-column>Nom</clr-dg-column>
+  <clr-dg-column [clrDgField]="'name'">Nom</clr-dg-column>
   <clr-dg-column>Description</clr-dg-column>
   <clr-dg-column>Prix</clr-dg-column>
   <clr-dg-column>Stock</clr-dg-column>
 
-  <clr-dg-row *ngFor="let product of products">
+  <clr-dg-row *clrDgItems="let product of products">
     <clr-dg-cell>{{product.idProduct}}</clr-dg-cell>
     <clr-dg-cell>{{product.name}}</clr-dg-cell>
     <clr-dg-cell>{{product.description }}</clr-dg-cell>
@@ -14,7 +14,7 @@
   </clr-dg-row>
 
   <clr-dg-footer>
-    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+    <clr-dg-pagination #pagination [clrDgPageSize]="20">
       <clr-dg-page-size [clrPageSizeOptions]="[10,20,50,100]">Produits par page</clr-dg-page-size>
       {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} produits
     </clr-dg-pagination>
