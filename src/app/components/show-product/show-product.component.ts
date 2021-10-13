@@ -9,17 +9,20 @@ import { Product } from 'src/app/models/product';
 export class ShowProductComponent implements OnInit {
 
   @Input() products!:Product[];
+  productModalOpen = false;
   constructor() { }
 
   ngOnInit(): void {
   }
   onEdit(product:Product):void{
+    this.productModalOpen=true;
 
   }
   onDelete(product:Product):void{
 
   }
   addProduct():void{
+    this.productModalOpen=true;
 
   }
 

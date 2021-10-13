@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -9,8 +10,21 @@ import { Product } from 'src/app/models/product';
 export class AddOrEditProductModalComponent implements OnInit {
 
   @Input() product!:Product;
+  productForm !: FormGroup;
 
-  onstructor() { }
+  constructor(private formBuilder:FormBuilder) {
+    this.productForm = formBuilder.group({
+      productInfos: formBuilder.group({
+        name:['',Validators.required],
+        description:['',Validators.required],
+        price:['',Validators.required],
+        stock:['', Validators.required]
+      }),
+      illustration: formBuilder.group({
+        image:['',Validators.required]
+      })
+    })
+  }
 
   ngOnInit(): void {
   }

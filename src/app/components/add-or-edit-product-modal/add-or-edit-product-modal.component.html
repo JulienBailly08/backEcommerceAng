@@ -12,17 +12,50 @@
 
   </clr-wizard-page>
 
+  <form [formGroup]="productForm">
+
   <clr-wizard-page>
     <ng-template clrPageTitle>Informations du produit</ng-template>
     <ng-template clrPageNavTitle>Step 2</ng-template>
+    <div formGroupName="productInfos">
+
+      <clr-input-container>
+        <label>Nom du produit</label>
+        <input clrInput placeholder="Saisir nom" name="name" formControlName="name" />
+      </clr-input-container>
+
+      <clr-textarea-container>
+        <label>Description</label>
+        <textarea clrTextarea formControlName="description" name="description"></textarea>
+      </clr-textarea-container>
+
+      <clr-input-container>
+        <label>Prix de l'objet</label>
+        <input clrInput placeholder="Saisir prix" name="price" formControlName="price" />
+      </clr-input-container>
+
+      <clr-input-container>
+        <label>Quantité en stock</label>
+        <input clrInput placeholder="Saisir valeur" name="stock" formControlName="stock" />
+      </clr-input-container>
+
+    </div>
 
   </clr-wizard-page>
 
   <clr-wizard-page>
     <ng-template clrPageTitle>Ajout d'image</ng-template>
     <ng-template clrPageNavTitle>Step 3</ng-template>
+    <div formGroupName="illustration">
+
+      <clr-input-container>
+        <label>Image du produit</label>
+        <input clrInput type="file" name="image" formControlName="image" />
+      </clr-input-container>
+
+    </div>
   </clr-wizard-page>
 
-
+</form>
 
 </clr-wizard>
