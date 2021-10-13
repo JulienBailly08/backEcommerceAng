@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-add-or-edit-product-modal',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddOrEditProductModalComponent implements OnInit {
 
-  constructor() { }
+  @Input() product!:Product;
+
+  onstructor() { }
 
   ngOnInit(): void {
   }

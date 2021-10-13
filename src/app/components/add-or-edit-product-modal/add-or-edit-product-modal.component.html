@@ -1,1 +1,28 @@
-<p>add-or-edit-product-modal works!</p>
+<clr-wizard #wizard [clrWizardOpen]="true">
+  <clr-wizard-title>{{product ? 'Modification du produits':'Ajout d\'un produit'}}</clr-wizard-title>
+
+  <clr-wizard-button [type]="'cancel'">Annuler</clr-wizard-button>
+  <clr-wizard-button [type]="'previous'">Retour</clr-wizard-button>
+  <clr-wizard-button [type]="'next'">Suivant</clr-wizard-button>
+  <clr-wizard-button [type]="'finish'">Finaliser</clr-wizard-button>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Selection de la catégorie</ng-template>
+    <ng-template clrPageNavTitle>Step 1</ng-template>
+
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Informations du produit</ng-template>
+    <ng-template clrPageNavTitle>Step 2</ng-template>
+
+  </clr-wizard-page>
+
+  <clr-wizard-page>
+    <ng-template clrPageTitle>Ajout d'image</ng-template>
+    <ng-template clrPageNavTitle>Step 3</ng-template>
+  </clr-wizard-page>
+
+
+
+</clr-wizard>

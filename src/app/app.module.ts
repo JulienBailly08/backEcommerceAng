@@ -10,6 +10,7 @@ import { AddOrEditProductModalComponent } from './components/add-or-edit-product
 import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShowProductComponent } from './components/show-product/show-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ShowProductComponent } from './components/show-product/show-product.com
     ClarityModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
