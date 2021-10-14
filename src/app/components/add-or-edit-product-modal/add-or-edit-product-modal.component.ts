@@ -65,7 +65,7 @@ export class AddOrEditProductModalComponent implements OnInit, OnDestroy {
   }
 
   handleFinnish():void{
-    const product = {
+    const product:Product = {
       ...this.productForm.get('productInfos')?.value, //...permet de créer associtation entre clefs de l'objet valeurs => normalizer ?
       ...this.productForm.get('illustration')?.value,
       category : this.idCategory
@@ -80,8 +80,6 @@ export class AddOrEditProductModalComponent implements OnInit, OnDestroy {
 
   detecteFiles(event:any):void{
     this.file = event.target.files[0];
-    console.log(this.file);
-    console.log(event);
   }
 
   ngOnInit(): void {

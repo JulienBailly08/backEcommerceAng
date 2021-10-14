@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-show-product',
@@ -12,7 +13,7 @@ export class ShowProductComponent implements OnInit {
   productModalOpen = false;
   selectedProduct!:Product;
 
-  constructor() { }
+  constructor(private productService : ProductsService) { }
 
   ngOnInit(): void {
   }
@@ -39,7 +40,15 @@ export class ShowProductComponent implements OnInit {
 
       }
       else{//creation produit
-
+        this.productService.addProduct(product).subscribe(
+          (data)=>{
+            if(data.status ==200){
+                console.log(data);
+                product.idProduct = data.args.lastInsertId; // recupération de l'id du produit créer via le retour du service
+                this.products.push(product); // ajout de l'objet dans le tableau des elements
+            }
+          }
+        );
       }
     }
     this.productModalOpen = false;

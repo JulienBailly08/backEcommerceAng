@@ -56,7 +56,7 @@
       <ng-template clrPageButtons>
         <clr-wizard-button [type]="'cancel'" (click)="CancelModal()">Annuler</clr-wizard-button>
         <clr-wizard-button [type]="'previous'">Retour</clr-wizard-button>
-        <clr-wizard-button [type]="'next'" [clrWizardButtonDisabled]="isProductInfoValid">Suivant</clr-wizard-button>
+        <clr-wizard-button [type]="'next'" [clrWizardButtonDisabled]="!isProductInfoValid">Suivant</clr-wizard-button>
       </ng-template>
 
     </clr-wizard-page>
